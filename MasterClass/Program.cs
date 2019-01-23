@@ -33,16 +33,10 @@ namespace Masterclass
     {
         static void Main(string[] args)
         {
-            /*int result = Add(3, 3);    //Take note here, i had create variable and THEN call method
-
-            Add(Add(3, 3), Add(2, 2));  //The method is equel to the return value itself - add = 6, add = 4
-
-            Console.WriteLine(Calculate()); //- return type = int calculation
-                                            //Calculate(); - return type = void*/
-            RegisterLogin();
+            
         }
 
-        public static void writeSomething()
+        public static void writeSomething() 
         {
             Console.WriteLine("I am called from a method");
             Console.ReadLine();
@@ -51,7 +45,7 @@ namespace Masterclass
         //When you create a method, you create parameter. 
         //When you call method what you hand over is argument
 
-        public static void writeSomethingSpecific(string myText)
+        public static void writeSomethingSpecific(string myText) //Parameters and Arguments
         {
             Console.WriteLine(myText);
             Console.Read();
@@ -72,14 +66,12 @@ namespace Masterclass
             return num1 / num2;
         }
 
-        //EXERCISE 1
         public static string Greetings(string name)
         {
             string result = ("Hi " + name + " my friend !!");
             return result;
-        }
+        }//EXERCISE 1
 
-        //USER INPUT
         public static int Calculate()
         {
             Console.WriteLine("Enter a Number: "); //Take note how two seperate user inputs are stored here
@@ -96,10 +88,9 @@ namespace Masterclass
             return calculation;// - this will enable to use .Writeline with method in main, see green in main
 
             //Console.WriteLine(calculation); // - this enables the method to just be called 
-        }
+        }//USER INPUT
 
-        //Try Catch & Finally
-        public static void TryCatch()
+        public static void TryCatch()  // TRY CATCH AND FINALLY
         {
 
             Console.WriteLine("Enter a number");
@@ -129,9 +120,8 @@ namespace Masterclass
                 //Exampe - want to write to file - cannot (error) , need to close opened file afterwards regardless
             }
         }
-
-        //Operators
-        public static void SmoothOperators()
+        
+        public static void SmoothOperators()  //OPERATORS
         {
             bool raining = true;
             bool sunny = true;
@@ -248,7 +238,7 @@ namespace Masterclass
             Console.Read();
         }
 
-        public static void RegisterLogin()
+        public static void RegisterLogin() //REGISTER AND LOGIN CONSOLE
         {
             string user = "Jeff";
             string password = "1969";
@@ -270,6 +260,140 @@ namespace Masterclass
             }
            
         }
+
+        public static void DetermineHighScore(int Score, string PlayerName) //DETERMINE HIGH SCORE
+        {
+            string HighScoreHolder = "Playa Playa";
+            int HighScore = 10;
+
+            if (Score > HighScore)
+            {
+                Console.WriteLine("New highscore is " + Score + " New highscore holder is " + PlayerName);
+            }
+            if (Score == HighScore)
+            {
+                Console.WriteLine("Your score equels the current Record " + HighScore + " Held by " + HighScoreHolder);
+            }
+            else if (Score < HighScore)
+            {
+                Console.WriteLine("The old highscore of " + HighScore + " could not be broken and is still held by " + HighScoreHolder);
+            }
+
+        }
+
+        public static void KeyboardInput() //KEYBOARD INPUT - Move 0 around a field of X (5X5)
+        {
+            int X = 5;
+            int Y = 4;
+
+            //  XXXXXX   XXXXXX
+            //  XXXXXX   XXXXXX
+            //  XXXXXX   XXXXXX
+            //  XXXXXX   XXXX0X
+            //  XXXXX0   XXXXXX
+
+
+            bool running = true;
+            ConsoleKey consoleKey; //How to create when key is created if statement is saying if console.key == is Left Arrow 
+
+            while (running)
+            {
+                consoleKey = Console.ReadKey().Key;
+
+                if (consoleKey == ConsoleKey.Escape)
+                {
+                    running = !running;
+                }
+                else if (consoleKey == ConsoleKey.LeftArrow)
+                {
+                    Y = Y - 1;
+                }
+                else if (consoleKey == ConsoleKey.RightArrow)
+                {
+                    Y = Y + 1;
+                }
+                else if (consoleKey == ConsoleKey.UpArrow)
+                {
+                    X = X - 1;
+                }
+                else if (consoleKey == ConsoleKey.DownArrow)
+                {
+                    X = X + 1;
+                }
+
+                Console.Clear();
+
+                for (int row = 0; row < 6; row++)
+                {
+                    for (int column = 0; column < 6; column++)
+                    {
+                        if (row == X && column == Y)
+                        {
+                            Console.Write("0 ");
+                        }
+                        else
+                            Console.Write("X ");
+                    }
+
+                    Console.WriteLine();
+                }
+            }
+        }
+
+        public static void leftArrow()
+        {
+            for (int i = 1; i < 6; i++)
+            {
+
+                for (int x = 5; x > i; x--)
+                {
+                    Console.Write("X");
+                }
+
+                for (int s = 0; s < i; s++)
+                {
+                    Console.Write("X");
+                }
+                Console.WriteLine();
+            }
+
+            for (int i = 1; i < 6; i++)
+            {
+                for (int x = 1; x < i; x++)
+                {
+                    Console.Write(" ");
+                }
+
+                for (int s = 6; s > i; s--)
+                {
+                    Console.Write("X");
+                }
+                Console.WriteLine();
+            }
+
+        }//lEFT ARROW USING FOR LOOP
+                                                                           
+        public static void printmethod3()//SIDE ARROW USING FOR LOOP                    
+        {                                                                 //  X 
+            for (int i = 1; i < 6; i++) //manages lines/rows              //  XX
+            {                                                             //  XXX             
+                for (int y = 0; y < i; y++)                               //  XXXX
+                {                                                         //  XXXXX
+                    Console.Write("x"); //manages values                  //  XXXX           
+                }                                                         //  XXX       
+                Console.WriteLine();                                      //  XX
+            }                                                             //  X  
+
+            for (int i = 6; i > 0; i--)
+            {
+                for (int x = 0; x < i; x++)
+                {
+                    Console.Write("x");
+                }
+                Console.WriteLine();
+            }
+        }
+
     }
 }
 
