@@ -261,7 +261,7 @@ namespace Masterclass
         // CONSTRUCTOR - Ability to customize allowing & enforcing changes to how instance of the object is created
         // Example of a PARAMETERISED constructor
         public Human(string firstName, string lastName, string eyeColour, int age) // each time object created - Have to give these 2 parameters
-        {                            
+        {
             // TAKE NOTE naming conventions here
             this.firstname = firstName;    // Prefixed para var with my to make it unique
             this.lastname = lastName;      // Prefixed var with this. - instructs which var to use as new var 
@@ -295,7 +295,7 @@ namespace Masterclass
                 Console.WriteLine("Hi , I'm {0} ", firstname);
             }
             else
-            Console.WriteLine("Hi , I'm {0} {1} i have {2} eyes and i am " + age + " years old ", firstname, lastname,eyecolour,age);
+                Console.WriteLine("Hi , I'm {0} {1} i have {2} eyes and i am " + age + " years old ", firstname, lastname, eyecolour, age);
         }
 
         // Default Constuctor
@@ -318,9 +318,9 @@ namespace Masterclass
             Michael.lastname = "Not Miguel";
             Michael.Introduce();          */
 
-       
+
     }
-   
+
 
 
 
@@ -329,6 +329,6 @@ namespace Masterclass
 
 
 
-    
-    
+
+
 
