@@ -29,14 +29,50 @@ using System.Threading.Tasks;
 //}
 namespace Masterclass
 {
-    class DemoTwo
+    public static class MyStaticClass
     {
-        static void Main(string[] args)
+        public static int myStaticVariable = 10;
+
+        public static void MyStaticMethod()
         {
-            
+            Console.WriteLine("This is a static method.");
         }
 
-        public static void writeSomething() 
+        public static int MyStaticProperty { get; set; }
+    }
+    public class DemoTwo
+    {
+
+        static void Main(string[] args)
+        {
+            int nonStaticVariable = MyStaticClass.myStaticVariable;
+
+            Console.WriteLine(nonStaticVariable);
+
+            MyStaticClass.MyStaticMethod();
+
+            MyStaticClass.MyStaticProperty = 100;
+
+            Console.WriteLine(MyStaticClass.MyStaticProperty);
+        }
+
+        /*   public override string ToString() -- it overides the default value of tostring for the object.   which in this case would have been snakegame.Point but not is x: ...
+            {
+            return "x:" + x + ",y" + y;
+            }
+        */
+        public static void WhoDatDog()
+        {
+            List<Dog> Neilsdogs = new List<Dog>();
+            Dog JimDog = new Dog("Maxiepoof", 6);  // SAME AS 
+            Neilsdogs.Add(JimDog);
+
+            Neilsdogs.Add(new Dog("Hoover", 12));  // THIS
+            Neilsdogs.Add(new Dog("Haley", 6));
+            Neilsdogs.Add(new Dog("MaxiePoofm", 5));
+        }
+
+        public static void writeSomething()
         {
             Console.WriteLine("I am called from a method");
             Console.ReadLine();
@@ -95,7 +131,7 @@ namespace Masterclass
 
             Console.WriteLine("Enter a number");
             string input = Console.ReadLine();
-                                                    //Can Set different code to run, for various errors
+            //Can Set different code to run, for various errors
             try
             {
                 /*int inputCon = int.Parse(input)*/
@@ -105,11 +141,11 @@ namespace Masterclass
             {
                 Console.WriteLine("String was not in correct format, to parse into int");
             }
-            catch (OverflowException)        
+            catch (OverflowException)
             {
                 Console.WriteLine("The input was too short or too long , for int32");
             }
-            catch (ArgumentNullException)        
+            catch (ArgumentNullException)
             {
                 Console.WriteLine("Input was empty");
             }
@@ -120,7 +156,7 @@ namespace Masterclass
                 //Exampe - want to write to file - cannot (error) , need to close opened file afterwards regardless
             }
         }
-        
+
         public static void SmoothOperators()  //OPERATORS
         {
             bool raining = true;
@@ -153,8 +189,8 @@ namespace Masterclass
             int num7 = 1;
             --num7;
 
-            Console.WriteLine("if the ++ symbols are post variable, that variable will only increase next line" , num4++);
-            Console.WriteLine("num4 now = 4, if you want it to increase on the same line declared ++ pre variable" , ++num4);
+            Console.WriteLine("if the ++ symbols are post variable, that variable will only increase next line", num4++);
+            Console.WriteLine("num4 now = 4, if you want it to increase on the same line declared ++ pre variable", ++num4);
 
             //TAKE NOTE - when variable values is changed depending on type of increment or decrement operator used
             //Example - for loop, can not declare loop control variable, ++/-- in block - affect flow possibly in desired way
@@ -163,10 +199,10 @@ namespace Masterclass
             int num8 = 5 % 2; //Remainder of 
             Console.WriteLine(num8);
 
-           //Relational & Type Operators
+            //Relational & Type Operators
 
             //IS LOWER THAN
-           bool smallerThan = 3 < 4;      //3 smaller than 4
+            bool smallerThan = 3 < 4;      //3 smaller than 4
 
             //BIGGER THAN
             bool biggerThan = 3 > 4;
@@ -258,7 +294,7 @@ namespace Masterclass
                 else
                     Console.WriteLine("Incorrect username and/or Password");
             }
-           
+
         }
 
         public static void DetermineHighScore(int Score, string PlayerName) //DETERMINE HIGH SCORE
@@ -281,7 +317,7 @@ namespace Masterclass
 
         }
 
-        public static void KeyboardInput() //KEYBOARD INPUT - Move 0 around a field of X (5X5)
+        public static void KeyboardInput() //KEYBOARD INPUT - Move 0 AROUND USING ARROWS 
         {
             int X = 5;
             int Y = 4;
@@ -372,7 +408,7 @@ namespace Masterclass
             }
 
         }//lEFT ARROW USING FOR LOOP
-                                                                           
+
         public static void printmethod3()//SIDE ARROW USING FOR LOOP                    
         {                                                                 //  X 
             for (int i = 1; i < 6; i++) //manages lines/rows              //  XX
@@ -394,7 +430,204 @@ namespace Masterclass
             }
         }
 
+        public static void SwitchAndCase()
+        {
+            int age = 0;
+
+            switch (age)  //Switch and Finally COMPARE VALUE TO A NUMBER OF VALUES
+            {
+                case 18:                                             //if values are the same = code executed
+                    Console.WriteLine("Old Enough for da Club");
+                    break;
+                case 16:
+                    Console.WriteLine("Old enough to get you in Jail");
+                    break;
+            }
+        }
+
+        public static void LoopsMasterClassChallenge() //Student Score Average
+        {
+            bool running = true;
+            List<int> studentScores = new List<int>();
+
+            while (running)
+            {
+                Console.WriteLine("Enter sudent score: ");
+                try
+                {
+                    int input = int.Parse(Console.ReadLine());
+                    studentScores.Add(input);
+                    if (input < 0)
+                    {
+                        break;
+                    }
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("You did not enter a number please try again");
+                }
+            }
+
+            Console.WriteLine("The average score for all student scores entered is " + studentScores.Average());
+            Console.ReadLine();
+        }
+
+        public static void EnhancedIfStatements()
+        {
+            //If statement (without brackets)
+            int temp = -5;
+            string stateOfMatter;
+
+            if (temp < 0)
+                stateOfMatter = "Its cold";
+            else
+                stateOfMatter = "Its could be colder";
+
+            Console.WriteLine("The state of matter is {0}", stateOfMatter);
+
+            //Enhanced (Same as above)
+            stateOfMatter = temp < 0 ? "It's Cold" : "It coudl be Colder"; // ? = IF it's true ----- 1st code following = executed if true ----- last code = executed if not
+            Console.WriteLine("The state of matter is {0}", stateOfMatter);
+            Console.ReadKey();
+
+        }
+
+        //  Create Class - Dog Type, Colour (properties) - call must be able to type add - ask what type what colour, List - give you list of dogs that have been captured
+        //  you can have a list of objects which have different data types - list of objects with different data types (parameter int, string) - this what program must have
+        //  Die aanhouer wen
     }
+
+    public class Dog
+    {
+        public string name;
+        public int age;
+
+        public Dog(string Name, int Age)
+        {
+            name = Name;
+            age = Age;
+        }
+
+        public override string ToString()
+        {
+            return name;
+        }
+        //  public void newDog(string name, int age)   //City - Hospital - Departments - Rooms - Patients - Condition each of/some of/but everyone has atleas one property/properties (of potentially different data types)
+        //  They all have/could have method/methods - in this case the 1st two simple be lists with a list - list of cities , in each city a list of hospitals - each hospital has departments
+        //  then look at departments type of data you receive from them - financial (int) which would be based on method (income vs expenses), type of personnel (string), another list patients each patient has property - condition  
+        //  
+    }
+
+    public static class AddDog
+    {
+        public static List<Dog> WhoDatDog()
+        {
+            List<Dog> Neilsdogs = new List<Dog>();
+
+            Dog JimDog = new Dog("Maxiepoof", 6);  // SAME AS 
+            Neilsdogs.Add(JimDog);
+
+            Neilsdogs.Add(new Dog("Hoover", 12));  // THIS
+            Neilsdogs.Add(new Dog("Haley", 6));
+            Neilsdogs.Add(new Dog("MaxiePoofm", 5));
+
+            return Neilsdogs;
+        }
+    }
+
+    public class Human
+    {
+        //Member Variable
+        public string firstname;
+        public string lastname;
+        public string eyecolour;
+        public int age;
+
+        //Parameterized Constructor
+        public Human(string firstName, string lastName, string eyeColour, int Age)
+        {
+            this.firstname = firstName;
+            this.lastname = lastName;
+            this.eyecolour = eyeColour;
+            this.age = Age;
+        }
+
+        public Human(string firstName, string lastName)
+        {
+            this.firstname = firstName;
+            this.lastname = lastName;
+        }
+
+        public Human(string firstName)
+        {
+            this.firstname = firstName;
+        }
+
+        //member method
+        public void IntroduceMyself()
+        {
+            if (age != 0 && lastname != null && eyecolour != null && firstname != null)
+            {
+                Console.WriteLine("Hi i am {0} {1} , i am {2} years old and i have {4} colour eyes ", firstname, lastname, age, eyecolour);
+            }
+            else if (age == 0 && firstname != null && lastname != null && eyecolour == null)
+            {
+                Console.WriteLine("Hi i am {0} {1} ", firstname, lastname);
+            }
+            else if (age == 0 && firstname != null && lastname == null && eyecolour == null)
+            {
+                Console.WriteLine("Hi i am {0} ", firstname);
+            }
+        }
+
+
+
+    }
+
+    public static class EnumerableExtension
+    {
+        public static T PickRandom<T>(this IEnumerable<T> source)
+        {
+            return source.PickRandom(1).Single();
+        }
+
+        public static IEnumerable<T> PickRandom<T>(this IEnumerable<T> source, int count)
+        {
+            return source.Shuffle().Take(count);
+        }
+
+        public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> source)
+        {
+            return source.OrderBy(x => Guid.NewGuid());
+        }
+    }
+
+    public class Person
+    {
+        static public string name;
+        static public string surname;
+        static public int salary;
+
+        static Person()
+        {
+
+        }
+
+        public static List<string> Names = new List<string>() { "George", "Dick", "Sadam", "Jimmy", "Mr R" };
+        public static List<string> Surnames = new List<string>() { "Cheney", "SoInnocent", "Washington" };
+
+
+        public static Person operator -(Person p)
+        {
+            Person.name = Names.PickRandom();
+            Person.surname = Surnames.PickRandom();
+            Person.salary = salary + salary;
+        }
+    }
+    // human - name surname salary - bob + jim (sum salary) create new person (random name, random surname)
+    // lists for names & surnames - choose randomly from those
+
+
 }
 
 
